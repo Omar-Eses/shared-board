@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 
+const FAVORITES = "favorites";
 
 const font = Poppins({
   subsets: ["latin"],
@@ -17,7 +18,7 @@ const font = Poppins({
 
 function OrgSidebar() {
   const searchParams = useSearchParams();
-  const isFavorites = searchParams.get("favorites");
+  const isFavorites = searchParams.get(FAVORITES);
 
   return (
     <div className="hidden lg:flex flex-col space-y-6 w-[206px] pl-5 pt-5">
@@ -77,7 +78,7 @@ function OrgSidebar() {
           <Link
             href={{
               pathname: "/",
-              query: { favorites: true },
+              query: { [FAVORITES]: true },
             }}
           >
             <Star className="h-4 w-4 mr-2" />
